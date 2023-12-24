@@ -1,6 +1,8 @@
-﻿namespace WebApi.Repositories.Interfaces
+﻿using WebApi.Models.Entities;
+
+namespace WebApi.Repositories.Interfaces
 {
-    public interface ICitizenRepository
+    public interface ICitizenRepository : IRepositoryBase<Citizen>
     {
     }
 }
