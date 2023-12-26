@@ -1,0 +1,29 @@
+﻿@model AppointmentModel;
+@{
+    ViewData["Title"] = "Randevu Al";
+}
+
+
+<div class="container">
+        <div class="row">
+            <div class="col-md-6 mx-auto mt-5">
+                <!-- Login Form -->
+                <div class="card border-secondary">
+                    <div class="card-body">
+                        <form asp-controller="Appointment" asp-action="Create" method="post">
+ 
+
+                            <div class="form-group">
+                           <label for="PolyclinicId">Poliklinik Seç:</label>
+                            <select asp-for="PolyclinicId" asp-items="@Model?.Polyclinics" class="form-control">
+                             <option value="">-- Seç --</option>
+                        </select>
+                         </div>
+
+                 <button type="submit" class="btn btn-primary">Randevu Oluştur</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

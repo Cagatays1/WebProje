@@ -4,6 +4,10 @@ namespace WebApi.Models.Entities
 {
     public class Citizen : CommonEntity
     {
-       
+        public string CitizenSurname { get; set; }
+        public string CitizenName { get; set; }
+        public Guid AppointmentId { get; set; }
+        public Appointment Appointment { get; set; }
+
     }
 }
