@@ -6,6 +6,7 @@ namespace WebApi.Models.Entities
     {
         public string CitizenSurname { get; set; }
         public string CitizenName { get; set; }
+        public string CitizenEmail { get; set; }
         public Guid AppointmentId { get; set; }
         public Appointment Appointment { get; set; }
 

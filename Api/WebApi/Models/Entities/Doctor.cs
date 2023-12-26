@@ -7,7 +7,5 @@ namespace WebApi.Models.Entities
         public string DoctorName { get; set; }
         public string DoctorSurname { get; set; }
         public Policlinic Policlinic { get; set; }
-
-
     }
 }
