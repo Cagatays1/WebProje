@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using WebApi.Context;
+using WebApi.Extensions;
 using WebApi.Repositories.Concrete;
 using WebApi.Repositories.Interfaces;
 
@@ -47,6 +48,8 @@ namespace WebApi
 
             app.UseAuthorization();
 
+
+            app.ConfigureDefaultAdminUser();
 
             app.MapControllers();
 
