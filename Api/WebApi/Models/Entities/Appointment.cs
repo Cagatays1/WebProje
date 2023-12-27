@@ -4,8 +4,7 @@ namespace WebApi.Models.Entities
 {
     public class Appointment : CommonEntity
     {
-        public DateTime SelectedDay { get; set; }
-        public DateTime SelectedHours { get; set; }
+        public DateTime AppointmentDate { get; set; }
         public Guid DoctorId { get; set; }
         public Doctor Doctor { get; set; }
         public Guid CitizenId { get; set; }
