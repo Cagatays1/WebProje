@@ -9,9 +9,8 @@ namespace WebApi.Config
         public void Configure(EntityTypeBuilder<Appointment> builder)
         {
             builder.HasKey(p => p.Id);
-            builder.Property(p => p.SelectedDay).IsRequired();
-            builder.Property(p => p.SelectedHours).IsRequired();
-
+            builder.Property(p => p.AppointmentDate).IsRequired();
+            builder.HasOne(p=>p.Doctor).WithMany().HasForeignKey(p => p.DoctorId);
         }
     }
 }
