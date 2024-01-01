@@ -1,6 +1,6 @@
-﻿using WebApi.Models.Entities.Common;
+﻿using WebClient.Models.Entities.Common;
 
-namespace WebApi.Models.Entities
+namespace WebClient.Models.Entities
 {
     public class Policlinic : CommonEntity
     {

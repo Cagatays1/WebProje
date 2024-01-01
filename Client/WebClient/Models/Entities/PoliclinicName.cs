@@ -1,4 +1,4 @@
-﻿namespace WebApi.Models.Entities.Common
+﻿namespace WebClient.Models.Entities
 {
     public static class PoliclinicName
     {

@@ -1,7 +1,7 @@
 ﻿using System.Linq.Expressions;
-using WebApi.Models.Entities.Common;
+using WebClient.Models.Entities.Common;
 
-namespace WebApi.Repositories.Interfaces
+namespace WebClient.Repositories.Interfaces
 {
     public interface IRepositoryBase<TEntity> where TEntity : CommonEntity
     {

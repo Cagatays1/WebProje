@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace WebClient.Models
+namespace WebClient.Areas.Admin.Controllers
 {
-    public class HomeController : Controller
+    public class DashboardController : Controller
     {
         public IActionResult Index()
         {

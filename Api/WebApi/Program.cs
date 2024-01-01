@@ -18,9 +18,12 @@ namespace WebApi
             // Add services to the container.
 
 
+
             builder.Services.AddScoped<ICitizenRepository, CitizenRepository>();
             builder.Services.AddScoped<IAppointmentRepository, AppointmentRepository>();
             builder.Services.AddScoped<IDoctorRepository, DoctorRepository>();
+            builder.Services.AddScoped<IPoliclinicRepository, PoliclinicRepository>();
+
             builder.Services.AddScoped<IAuthService, AuthService>();
 
             //builder.Services.dataseeding(builder.Configuration);

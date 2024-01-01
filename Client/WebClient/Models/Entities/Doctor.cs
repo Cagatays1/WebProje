@@ -1,6 +1,6 @@
-﻿using WebApi.Models.Entities.Common;
+﻿using WebClient.Models.Entities.Common;
 
-namespace WebApi.Models.Entities
+namespace WebClient.Models.Entities
 {
     public class Doctor : CommonEntity
     {
@@ -8,5 +8,6 @@ namespace WebApi.Models.Entities
         public string DoctorSurname { get; set; }
         public Guid PoliclinicId { get; set; }
         public Policlinic Policlinic { get; set; }
+        public ICollection<Appointment> Appointments { get; set; }
     }
 }

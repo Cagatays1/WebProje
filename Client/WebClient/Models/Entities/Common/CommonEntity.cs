@@ -1,4 +1,4 @@
-﻿namespace WebApi.Models.Entities.Common
+﻿namespace WebClient.Models.Entities.Common
 {
     public abstract class CommonEntity
     {

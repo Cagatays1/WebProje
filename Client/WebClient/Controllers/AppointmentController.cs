@@ -1,41 +1,49 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using WebClient.Models;
+using WebClient.Models.Entities;
+using WebClient.Repositories.Interfaces;
+using WebClient.ViewModels;
 
 public class AppointmentController : Controller
 {
+    private readonly ICitizenRepository _citizenRepository;
+    private readonly IAppointmentRepository _appointmentRepository;
+    private readonly IDoctorRepository _doctorRepository;
+    private readonly IPoliclinicRepository _policlinicRepository;
+    public AppointmentController(ICitizenRepository citizenRepository, IAppointmentRepository appointmentRepository, IDoctorRepository doctorRepository, IPoliclinicRepository policlinicRepository)
+    {
+        _citizenRepository = citizenRepository;
+        _appointmentRepository = appointmentRepository;
+        _doctorRepository = doctorRepository;
+        _policlinicRepository = policlinicRepository;
+    }
     public IActionResult Randevu()
     {
         return View();
     }
-    public IActionResult Create()
+
+    public IActionResult AddAppointment()
     {
-        // Poliklinik verileri örneği (veritabanından alınacak)
-        var polyclinics = new List<SelectListItem>
-        {
-            new SelectListItem { Value = "1", Text = "Genel Cerrahi" },
-            new SelectListItem { Value = "2", Text = "Dahiliye" },
-            new SelectListItem { Value = "3", Text = "Göz" },
-            new SelectListItem { Value = "4", Text = "Kulak-Burun-Boğaz" },
-            new SelectListItem { Value = "5", Text = "Kalp Cerrahi" },
-          
-            // Diğer poliklinikler
-        };
-
-        var model = new AppointmentModel
-        {
-            Polyclinics = polyclinics
-        };
-
-        return View(model);
+        var doctors = _doctorRepository.GetAll().ToList();
+        ViewBag.Doctors = new SelectList(doctors, "Id", "Name");
+        return View();
     }
 
     [HttpPost]
-    public IActionResult Create(AppointmentModel model)
+    public async Task<IActionResult> AddAppointment(AppointmentDtoForCreation dto)
     {
-        // Seçilen poliklinik id'sini kullanarak randevu oluştur
-        // İşlemler...
-
-        return RedirectToAction("Index", "Home"); // Başka bir sayfaya yönlendirilebilir
+        var appointment = new Appointment()
+        {
+            Id = Guid.NewGuid(),
+            AppointmentDate = dto.AppointmentDate,
+            CreatedDate = DateTime.Now,
+            CitizenId = dto.CitizenId,
+            DoctorId = dto.DoctorId,
+        };
+        appointment.Doctor = await _doctorRepository.GetByIdAsync(dto.DoctorId.ToString());
+        appointment.Citizen = await _citizenRepository.GetByIdAsync(dto.CitizenId.ToString());
+        await _appointmentRepository.AddAsync(appointment);
+        return View();
     }
 }

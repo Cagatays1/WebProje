@@ -1,0 +1,32 @@
+﻿@model Appointment
+@{
+    ViewBag.Title = "Randevu Oluştur";
+}
+
+<div>
+    <h2>Randevu Oluştur</h2>
+    <form method="post" asp-action="AddAppointment" enctype="multipart/form-data">
+
+        <div class="text-danger" asp-validation-summary="All"></div>
+        <div class="form-group my-3">
+            <label asp-for="DoctorId">Doktor Seçiniz:</label>
+            <select asp-for="DoctorId" asp-items="ViewBag.Doctors" class="form-control"></select>
+        </div>
+
+        <div class="form-group my-3">
+            <label asp-for="AppointmentDate">Tarih ve Saat Seçiniz:</label>
+            <input asp-for="AppointmentDate" type="datetime-local" class="form-control" />
+        </div>
+        <div class="form-group my-3">
+            <div class="btn-group">
+                <button type="submit" class="btn btn-primary">
+                    <i class="fa fa-save"></i> Kaydet
+                </button>
+                <a asp-action="Index" class="btn btn-outline-primary">
+                    <i class="fa fa-list"></i> Anasayfa
+                </a>
+            </div>
+        </div>
+    </form>
+</div>
+

@@ -1,8 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System.Linq.Expressions;
+using WebClient.Models.Entities.Common;
+using WebClient.Repositories.Interfaces;
 
-namespace WebApi.Repositories.Concrete
+namespace WebClient.Repositories.Concrete
 {
     public class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where TEntity : CommonEntity
     {
