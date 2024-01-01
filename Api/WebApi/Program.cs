@@ -23,6 +23,7 @@ namespace WebApi
             builder.Services.AddScoped<IDoctorRepository, DoctorRepository>();
             builder.Services.AddScoped<IAuthService, AuthService>();
 
+            //builder.Services.dataseeding(builder.Configuration);
 
             builder.Services.AddControllers();
             builder.Services.AddDbContext<DatabaseContext>(options =>

@@ -1,9 +1,13 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Configuration;
+using WebApi.Config;
 
 namespace WebApi.Extensions
 {
     public static class ApplicationExtensions
     {
+
+
         public static async void ConfigureDefaultAdminUser(this IApplicationBuilder app)
         {
             const string adminUser = "Admin";
@@ -22,6 +26,7 @@ namespace WebApi.Extensions
                 .CreateAsyncScope()
                 .ServiceProvider
                 .GetRequiredService<RoleManager<IdentityRole>>();
+
 
             IdentityUser user = await userManager.FindByNameAsync(adminUser);
             if (user is null)
@@ -48,6 +53,7 @@ namespace WebApi.Extensions
                     throw new Exception("System have problems with role defination for admin");
 
             }
+            
 
         }
     }
